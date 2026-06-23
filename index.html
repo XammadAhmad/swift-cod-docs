@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift COD Form | Official Documentation</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --primary: #16a34a;
+            --primary-hover: #15803d;
+            --bg-color: #f9fafb;
+            --text-main: #111827;
+            --text-muted: #4b5563;
+            --border: #e5e7eb;
+            --card-bg: #ffffff;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 20px; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 8px;}
+        .nav-links a { margin-left: 24px; text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color 0.2s;}
+        .nav-links a:hover { color: var(--primary); }
+
+        /* LAYOUT */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: max-content;
+        }
+        .sidebar-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 700; margin-bottom: 16px; }
+        .sidebar-nav { display: flex; flexDirection: column; gap: 12px; }
+        .sidebar-nav a { display: block; text-decoration: none; color: var(--text-muted); font-size: 15px; padding: 8px 12px; border-radius: 6px; transition: all 0.2s; margin-bottom: 4px;}
+        .sidebar-nav a:hover, .sidebar-nav a.active { background-color: #f0fdf4; color: var(--primary); font-weight: 600; }
+
+        /* MAIN CONTENT */
+        .content {
+            flex: 1;
+            background-color: var(--card-bg);
+            padding: 48px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 { font-size: 32px; margin-bottom: 16px; color: var(--text-main); letter-spacing: -0.5px; }
+        h2 { font-size: 24px; margin-top: 40px; margin-bottom: 16px; color: var(--text-main); padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 18px; margin-top: 24px; margin-bottom: 12px; }
+        p { margin-bottom: 16px; color: var(--text-muted); font-size: 16px; }
+        
+        /* ALERTS & CARDS */
+        .alert { background-color: #f0fdf4; border-left: 4px solid var(--primary); padding: 16px; border-radius: 0 8px 8px 0; margin-bottom: 24px; }
+        .alert p { margin: 0; color: #166534; font-weight: 500; }
+
+        /* LISTS */
+        ul, ol { margin-left: 24px; margin-bottom: 24px; color: var(--text-muted); }
+        li { margin-bottom: 8px; }
+
+        /* STEPS */
+        .step-block { margin-bottom: 32px; }
+        .step-number { display: inline-block; background-color: var(--text-main); color: white; width: 24px; height: 24px; text-align: center; line-height: 24px; border-radius: 50%; font-size: 12px; font-weight: bold; margin-right: 8px; }
+
+        /* FOOTER */
+        .footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 40px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; top: 0; margin-bottom: 24px; }
+            .content { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #16a34a;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            Swift COD Form
+        </a>
+        <div class="nav-links">
+            <a href="#introduction">Documentation</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">Documentation</div>
+            <nav class="sidebar-nav">
+                <a href="#introduction">Introduction & Benefits</a>
+                <a href="#quick-setup">Quick Setup Guide</a>
+                <a href="#advanced-features">Advanced Features</a>
+                <a href="#faq">FAQ & Support</a>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="introduction">
+                <h1>Welcome to Swift COD Form</h1>
+                <p>We help Shopify merchants bypass the slow, traditional checkout process with a lightning-fast, 1-click Cash on Delivery (COD) popup. Designed specifically to boost your conversion rates and simplify the buying process for your customers.</p>
+                
+                <div class="alert">
+                    <p>🚀 Stores using Swift COD report an average conversion rate increase of 30% within the first week.</p>
+                </div>
+
+                <h2>Why Use Swift COD?</h2>
+                <ul>
+                    <li><strong>1-Click Checkout:</strong> Customers can place an order directly from the product page in under 5 seconds.</li>
+                    <li><strong>Fully Customizable:</strong> Match the button and popup exactly to your store's branding.</li>
+                    <li><strong>Mobile Optimized:</strong> Built specifically for a flawless, thumb-friendly mobile shopping experience.</li>
+                    <li><strong>Pixel Tracking:</strong> Automatically fire "Purchase" events to your Facebook, TikTok, and Google pixels.</li>
+                    <li><strong>Bulletproof Reliability:</strong> Hosted on enterprise-grade infrastructure to ensure the form never crashes during high traffic.</li>
+                </ul>
+            </section>
+
+            <section id="quick-setup">
+                <h2>Quick Setup Guide</h2>
+                <p>Getting started takes less than 2 minutes. Follow these simple steps to activate the app on your store.</p>
+
+                <div class="step-block">
+                    <h3><span class="step-number">1</span> Customize Your Form</h3>
+                    <p>Open the Swift COD Form app in your Shopify admin. Navigate to the <strong>COD Forms</strong> tab. Use the live preview canvas to change your button colors, form text, and required fields. Click <strong>Save</strong> when you are happy with the design.</p>
+                </div>
+
+                <div class="step-block">
+                    <h3><span class="step-number">2</span> Add the Button to Your Store</h3>
+                    <ol>
+                        <li>From your Shopify Admin, go to <strong>Online Store > Themes</strong>.</li>
+                        <li>Click <strong>Customize</strong> on your live theme.</li>
+                        <li>Navigate to your <strong>Default Product Page</strong> using the top dropdown menu.</li>
+                        <li>On the left sidebar, click <strong>Add Block</strong> under the Product Information section.</li>
+                        <li>Select <strong>Swift COD Button</strong> and drag it below the Buy Now button.</li>
+                        <li>Click <strong>Save</strong>.</li>
+                    </ol>
+                </div>
+
+                <div class="step-block">
+                    <h3><span class="step-number">3</span> Manage Your Orders</h3>
+                    <p>When a customer places an order via the popup, it will instantly appear in two places: Your native Shopify <strong>Orders</strong> tab (as an unfulfilled order), and the Swift COD <strong>Orders Dashboard</strong>, where you can easily verify, cancel, or add tracking numbers in bulk.</p>
+                </div>
+            </section>
+
+            <section id="advanced-features">
+                <h2>Advanced Features</h2>
+                
+                <h3>Setting Up Shipping Rates</h3>
+                <p>Want to charge for delivery? Go to the <strong>COD Forms</strong> tab and click <em>Manage Shipping Rates</em>. Add a rate (e.g., "Standard Shipping - Rs. 200"). You can even set conditional rules to make shipping free if the order value is over a certain amount!</p>
+
+                <h3>Connecting Your Pixels</h3>
+                <p>Go to the <strong>Settings</strong> tab inside the app. Paste your Meta (Facebook), TikTok, or Google Pixel IDs into the respective boxes. Click Save. The app will now automatically track conversions with zero code required.</p>
+            </section>
+
+            <section id="faq">
+                <h2>Support & Legal</h2>
+                <p>We are dedicated to your success. If you run into any issues, theme conflicts, or have feature requests, our team is ready to assist you.</p>
+                <p><strong>Email us at:</strong> support@yourdomain.com</p>
+                
+                <p style="margin-top: 20px;">
+                    <a href="privacy-policy.html" style="color: var(--primary); font-weight: bold; text-decoration: none;">Read our Privacy Policy &rarr;</a>
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Swift COD Form. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
